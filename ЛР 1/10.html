@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let login="OlegBasalay";
+        let pass="Oleg123";
+
+        logincheck=prompt("Введите логин",'');
+
+        if(logincheck==login){
+            passcheck=prompt("Введите пароль",'');
+
+            if(passcheck==pass){
+                alert('Авторизация прошла успешно');
+            }
+            else{
+                quest=confirm("Пароль неверный, восстановить пароль путём ответа на секретный вопрос?");
+
+                if(quest){
+                    let squest="Якимовец";
+
+                    answer=prompt("Введите девичью фамилию Вашей матери", '');
+
+                    if(answer==squest){
+                        alert("Ответ верный, ваш пароль: "+pass);
+                    }
+                    else{
+                        alert("Ответ неверный");
+                    }
+                }
+                else{
+                    alert('Всего хорошего');
+                }
+            }
+        }
+        else{
+            alert('Такого логина не существует, повторите попытку.');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

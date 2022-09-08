@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let maths;
+        let russian;
+        let english;
+
+        mathsres=prompt("Вы сдали экзамен по математике?(Да/Нет)")
+
+        if(mathsres=="Да"){
+            maths=true;
+        }
+        else if(mathsres=="Нет"){
+            maths=false;
+        }
+        else{
+            alert("Неверный ответ")
+        }
+
+        russianres=prompt("Вы сдали экзамен по русскому?(Да/Нет)")
+
+        if(russianres=="Да"){
+            russian=true;
+        }
+        else if(russianres=="Нет"){
+            russian=false;
+        }
+        else{
+            alert("Неверный ответ")
+        }
+
+        englishres=prompt("Вы сдали экзамен по английскому?(Да/Нет)")
+
+        if(englishres=="Да"){
+            english=true;
+        }
+        else if(englishres=="Нет"){
+            english=false;
+        }
+        else{
+            alert("Неверный ответ")
+        }
+
+        if(maths==true&&russian==true&&english==true){
+            alert("Вы успешно сдали все экзамены");
+        }
+        else if(maths==false&&russian==false&&english==false){
+            alert("Вы отчислены!");
+        }
+        else if(maths==false||russian==false||english==false){
+            alert("Вас ожидает пересдача!");
+        }
+        else{
+            alert("Какие-то данные введены некорректно");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

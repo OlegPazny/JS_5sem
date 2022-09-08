@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let username;
+        let city;
+        let birthdate;
+        let color;
+        let answer;
+        let inf;
+        let num;
+        let per;
+        let message="Данные неверны";
+
+        username=prompt("Введите имя пользователя",'');
+        city=prompt("Введите название города",'');
+        birthdate=prompt("Введите год рождения",'');
+        color=prompt("Введите цвет (красный)",'');
+
+        if(color!="красный")
+        {
+            alert(message);
+            color=message;
+        }
+
+        answer=prompt("Введите ответ (да/нет)",'');
+
+        if(answer!="да" & answer!="нет")
+        {
+            alert(message);
+            answer=message;
+        }
+
+        inf=prompt("Введите бесконечность",'');
+
+        if(inf!="бесконечность")
+        {
+            alert(message);
+            inf=message;
+        }
+
+        num=prompt("Введите число (532)",'');
+
+        if(num!=532)
+        {
+            alert(message);
+            num=message;
+        }
+
+        per=prompt("Введите периметр в мм (120)",'');
+
+        if(per!=120)
+        {
+            alert(message);
+            per=message;
+        }
+
+        alert(`Имя пользователя: ${username}, название города: ${city}, год рождения ${birthdate}, цвет: ${color}, ответ пользователя: ${answer}, бесконечность: ${inf}, число: ${num}, периметр: ${per}`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
