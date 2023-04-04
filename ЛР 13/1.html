@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .sky {
+            width: 520px;
+        }
+
+        .mountOne,
+        .mountTwo {
+            position: absolute;
+            width: 520px;
+            transform: translateY(100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction:column; align-items: center;">
+        <h1>Карточка</h1>
+        <img class="card" src="card.jpg" width="280px" height="400px">
+    </div>
+    <div style="display: flex; flex-direction:column; align-items: center; position: relative;">
+        <h1>Прогрессбар</h1>
+        <input type="number" class="counter">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100px" height="100px" transform="rotate(-90) scale(1,-1)">
+            <circle class="circle" cx="50" cy="50" r="40" fill="none" stroke="black" stroke-width="3"
+                stroke-dasharray="250" stroke-dashoffset="0" />
+        </svg>
+    </div>
+    <div style="display: flex; flex-direction:column; align-items: center;">
+        <h1>Параллакс</h1>
+        <div class="paralax" style="width: 400px; height: 230px; border: 3px black solid; overflow: hidden;">
+            <div style="position: absolute; overflow: hidden; width: 400px; height: 230px;">
+                <img src="./sky.jpg" class="sky">
+            </div>
+            <div style="position: absolute; overflow: hidden; width: 400px; height: 230px;">
+                <img src="./mountains2.png" class="mountOne">
+            </div>
+            <div style="position: absolute; overflow: hidden; width: 400px; height: 230px;">
+                <img src="./mountains1.png" class="mountTwo">
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        //Task1
+
+        let card = document.querySelector('.card');
+
+        card.addEventListener('mousemove', cardMove);
+        card.addEventListener('mouseleave', cardLeave);
+
+        function cardMove(e) {
+            if (e.offsetY < card.offsetHeight / 2){
+                card.style.transform = `rotateX(${-(e.offsetY - card.offsetHeight / 2) / 15}deg) rotateY(${(e.offsetX - card.offsetWidth / 2) / 15}deg)`;
+            }
+            else{
+                card.style.transform = `rotateX(${-(e.offsetY - card.offsetHeight / 2) / 15}deg) rotateY(${-(e.offsetX - card.offsetWidth / 2) / 15}deg)`;
+            }
+        }
+        function cardLeave(e) {
+            card.style.transition = '0.5s ease-in-out';
+            card.style.transform = '';
+            setTimeout(() => card.style.transition = '', 500);
+        }
+
+        //Task2
+
+        let circle = document.querySelector('.circle');
+        let counter = document.querySelector('.counter');
+
+        counter.addEventListener('change', counterChange);
+
+        function counterChange(e) {
+            circle.setAttribute('stroke-dashoffset', e.target.value * 2.5);
+        }
+
+        //Task3
+
+        let paralax = document.querySelector('.paralax');
+        let sky = document.querySelector('.sky');
+        let mountOne = document.querySelector('.mountOne');
+        let mountTwo = document.querySelector('.mountTwo');
+
+        paralax.addEventListener('mousemove', paralaxMove);
+
+        function paralaxMove(e) {
+            sky.style.transform = `translateX(${-e.offsetX / 50}px)`;
+            mountOne.style.transform = `translateX(${-e.offsetX / 25}px) translateY(100px)`;
+            mountTwo.style.transform = `translateX(${-e.offsetX / 10}px) translateY(100px)`;
+        }
+    </script>
+</body>
+
+</html>

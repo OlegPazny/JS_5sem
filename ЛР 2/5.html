@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <script>
+        let a=+prompt("Сторона а","");
+        let b=+prompt("Сторона b","");
+
+        function params(a,b){
+            let S;
+            let P;
+
+            if(a==b){
+                P=4*a;
+                alert("Периметр квадрата "+P);
+            }
+            else{
+                S=a*b;
+                alert("Площадь прямоугольника "+S);
+            }
+        }//function declaration
+
+        let funExpr = params;//function expression
+
+        params(a,b);
+        funExpr(a,b);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

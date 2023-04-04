@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <script>
+        let comm=prompt("Введите комментарий","");
+        let comlen=30;
+
+        if(comm.length>comlen){
+            alert("Длина строки больше "+comlen+" символов");
+            // return;
+        }else{
+            alert("Исходная строка: "+comm);
+        }
+
+        let moderated=comm.split(' ').reduce((previous,current)=>{
+            let currentBuff=current;
+
+            currentBuff=currentBuff.replace(new RegExp('кот','gi'),'*');
+            if(currentBuff.toLowerCase().indexOf('собак') !=-1){
+                currentBuff=currentBuff.replace(currentBuff[0],currentBuff[0].toUpperCase());
+            }
+            currentBuff=currentBuff.replace(new RegExp('пес','gi'),'многоуважаемый пес');
+            return previous.concat(currentBuff);
+        },[]);
+
+        console.log(moderated.join(' '));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

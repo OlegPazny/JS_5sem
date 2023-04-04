@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <script>
+        let figure={
+            stroke:'2mm',
+            fill:'white',
+            corners:0,
+        };
+
+        let circle={
+            __proto__:figure,
+        };
+        let greenCircle={
+            __proto__:circle,
+            fill:'Green',
+        };
+
+        console.log(greenCircle);
+
+        let oneLineTriangle={
+            __proto__:figure,
+            corners:3,
+            lines:1,
+        };
+        let threeLineTriangle={
+            __proto__:oneLineTriangle,
+            lines:3,
+        };
+
+        console.log(threeLineTriangle);
+
+        let bigSquare=Object.create(figure, {corners:{value:4}, fill:{value:"Yellow"}});
+        let tinySquare=Object.create(bigSquare, {size:{value:"small"}});
+
+        console.log(tinySquare.hasOwnProperty('fill'));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

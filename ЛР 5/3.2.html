@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2</title>
+    <script>
+        let names=["second", "first", "third"];
+
+        function sortset(arr){
+            console.log(arr.sort());
+
+            console.log(arr.reverse());
+        }
+
+        function len_set(arr){
+            let len=6;
+
+            for(let value of arr){
+                if(value.length==len){
+                    console.log(value);
+                    break;
+                }
+            }
+        }
+
+        function search(arr){
+            let letter="t";
+
+            for (let value of arr){
+                if(value[0]==letter){
+                    console.log(value);
+                    break;
+                }else{
+                    console.log("Имя не найдено!");
+                }
+            }
+        }
+
+        sortset(names);
+        len_set(names);
+        search(names);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

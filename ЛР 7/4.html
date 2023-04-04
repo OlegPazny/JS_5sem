@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <script>
+        function* getCoords(){
+            
+            let coords={
+                x:0,
+                y:0,
+            }
+            for(;;){
+                let move=prompt("В какую сторону?");
+                //if(+move===0) break;
+                switch(move){
+                    case 'влево':
+                        yield coords={//ключевое слово генератора
+                            ...coords,//остаточные параметры
+                            x:coords.x-=10
+                        }
+                        break;
+                        case 'вправо':
+                        yield coords={//ключевое слово генератора
+                            ...coords,
+                            x:coords.x+=10
+                        }
+                        break;
+                        case 'вниз':
+                        yield coords={//ключевое слово генератора
+                            ...coords,
+                            y:coords.y-=10
+                        }
+                        break;
+                        case 'вверх':
+                        yield coords={//ключевое слово генератора
+                            ...coords,
+                            y:coords.y+=10
+                        }
+                        break;
+                }
+            }
+        }
+
+        for(const value of getCoords()){
+            console.log(value);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

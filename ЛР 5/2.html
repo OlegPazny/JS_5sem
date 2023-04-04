@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <script>
+        let names= new Set(["first", "second", "third"]);
+//сортировка в прямом и обратном порядке
+        function sortset(set){
+            let arr_set=Array.from(set);
+
+            console.log(arr_set.sort());
+
+            console.log(arr_set.reverse());
+        }
+//поиск по длине имени
+        function len_set(set){
+            let arr_set=Array.from(set);
+
+            let len=5;
+
+            for(let value of set){
+                if(value.length==len){
+                    console.log(value);
+                    break;
+                }
+            }
+        }
+//поиск по первой букве
+        function search(set){
+            let arr_set=Array.from(set);
+
+            let letter="o";
+
+            for (let value of set){
+                if(value[0]==letter){
+                    console.log(value);
+                    break;
+                }else{
+                    console.log("Имя не найдено!");
+                }
+            }
+        }
+
+        sortset(names);
+        len_set(names);
+        search(names);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

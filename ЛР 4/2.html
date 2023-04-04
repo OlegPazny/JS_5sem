@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    
+    <style>
+        div{
+            height: 250px;
+            width: 250px;
+            border-width: 2px;
+            border-color: black;
+            border-style: solid;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+        <pre id="align"></pre>
+        <script>
+            let name=prompt("Введите имя","");
+            let mass=name.split(' ');
+    
+            if(mass.length==1){
+                mass[0]="***"+mass[0]+"***";
+                alert(mass[0]);
+            }else if(mass.length>1){
+                let maxLength=mass.reduce((current,next)=>current.Length>next.Length?current:next).length;
+    
+                name=mass.map(str=>str.padStart(maxLength));
+                name=name.join('\n');
+            }
+    
+            document.getElementById('align').textContent = name;
+        </script>
+</body>
+</html>

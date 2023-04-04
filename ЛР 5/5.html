@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <script>
+        let array=[];
+        let results='';
+
+        let num=+prompt("Enter players amount","");
+
+        for (let i=1;i<=num;i++){
+            array.push({id: Math.floor(Math.random()*(10000-1)+1), name: `Player ${i}`, score: Math.floor(Math.random()*(1000-1)+1)});
+        }
+        for (let item of array){
+            results+=(item.name + ' got '+item.score+' points. \n');
+        }
+//1 2 3 место
+        for (let item of array){
+            let key='score';
+            sorted=array.sort((score1,score2)=>score1[key]>score2[key]?1:-1).reverse();
+        }
+
+        for(let i=0;i<3;i++){
+            console.log(sorted[i]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

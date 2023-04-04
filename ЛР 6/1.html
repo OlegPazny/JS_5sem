@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <script>
+        function test(){
+            if (arguments.length<=3){
+                for(let i=0;i<=arguments.length;i++){
+                    alert(arguments[i]);
+                }
+            }
+            else if(arguments.length>3&&arguments.length<=5){
+                for(let i=0;i<=arguments.length;i++){
+                    alert(typeof(arguments[i]));
+                }
+            }else if(arguments.length>5&&arguments.length<=7){
+                alert(arguments.length);
+            }else if(arguments.length>7){
+                alert('Количество аргументов большое');
+            }
+        }
+        
+        test(1, 2, 'олег');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

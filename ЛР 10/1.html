@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        .task1{
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+        }
+    </style>
+</head>
+<script>
+    class Component {
+        constructor(selector) {
+            this.Component = document.createElement('div');
+            this.Component.className = selector;
+            document.body.appendChild(this.Component);
+        }
+        displayOn() {//показывает компонент
+            this.Component.style.display = 'block';
+        }
+        displayOff() {//скрывает компонент
+            this.Component.style.display = 'none';
+        }
+    }
+
+    class BlockComponent extends Component {//класс наследуется от веб-компонента
+        constructor(selector, options) {//options объект свойств блочного элемента
+            super(selector);//вызов родительского конструктора
+            Object.assign(this.Component.style, options);
+        }
+    }
+
+    class CircleComponent extends BlockComponent {
+        constructor(selector, options) {
+            super(selector, options);
+            this.Component.style.borderRadius = "50%";
+        }
+    }
+
+    class Button {//просто кнопка
+        constructor(content) {
+            this.Component = document.createElement('button');
+            this.Component.innerText = content;
+            Object.assign(this.Component.style, { cursor: 'pointer' });
+            document.body.appendChild(this.Component);
+        }
+    }
+
+    class TimeButton extends Button {//время-кнопка
+        constructor(content) {
+            super(content);
+            Object.assign(this.Component.style, {
+                backgroundColor: 'gray',
+                border: 'none',
+                color: 'red',
+                textAlign: 'center',
+                textDecoration: 'none',
+                fontSize: '14px',
+                margin:'5px 5px'
+            });
+            this.Component.onclick = () => alert(`${new Date().getHours()}:${new Date().getMinutes()}`);
+        }
+    }
+
+    class SizeButton extends Button {//размер-кнопка
+        constructor(content) {
+            super(content);
+            Object.assign(this.Component.style, {
+                height: '25px',
+                color: 'aquamarine',
+                textAlign: 'center',
+                lineHeight: '20px',
+                font: 'normal 17px Codec Pro',
+                backgroundImage: ' linear-gradient(#3b2751, white)',
+                margin:'5px 5px'
+            });
+            this.Component.onmouseenter = () => Object.assign(this.Component.style, { height: '40px' });
+        }
+    }
+
+    class ColorButton extends Button {//цвет-кнопка
+        constructor(content) {
+            super(content);
+            Object.assign(this.Component.style, {
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #CCCCCC',
+                borderRadius: '4px',
+                color: '#555555',
+                fontSize: '14px',
+                textAlign: 'center',
+                height: '40px',
+                lineHeight: '20px',
+                verticalAlign: 'middle',
+            });
+            this.Component.onclick = () => Object.assign(this.Component.style, { backgroundColor: '#000000', color: '#ffffff' });
+        }
+    }
+
+    class File {
+        constructor(icon) {
+            this.Component = document.createElement('label');
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.style.display = 'none';
+            this.Component.appendChild(input);
+            this.Component.appendChild(icon);
+            document.body.appendChild(this.Component);
+        }
+    }
+
+    class RedCircleFile extends File {
+        constructor() {
+            let fileElement = document.createElement('div');
+            Object.assign(fileElement.style, { width: "50px", height: '50px', background: 'Red', borderRadius: '50%' });
+            super(fileElement);
+        }
+    }
+
+    class BlackParallelogramFile extends File {
+        constructor() {
+            let fileElement = document.createElement('div');
+            Object.assign(fileElement.style, {
+                width: '50px',
+                height: '25px',
+                transform: 'skew(20deg)',
+                background: 'black'
+            });
+            super(fileElement);
+        }
+    }
+
+    class GreenOvalFile extends File {
+        constructor() {
+            let fileElement = document.createElement('div');
+            Object.assign(fileElement.style, {
+                width: '50px',
+                height: '25px',
+                background: 'Green',
+                borderRadius: '25px / 12px'
+            });
+            super(fileElement);
+        }
+
+    }
+
+    function Task1() {
+        let button = new Component('task1');
+        button.displayOn();
+        setTimeout(() => button.displayOff(), 2000);
+    }
+
+    function Task2() {
+        let squareRed = new BlockComponent('squareRed', { "background-color": 'Red', width: "100px", height: "100px" });
+        let squareBlue = new BlockComponent('squareBlue', { "background-color": 'Blue', width: "120px", height: "120px" });
+    }
+
+    function Task3() {
+        let circleGreen = new CircleComponent('circleGreen', { "background-color": 'Green', width: "90px", height: "90px" });
+    }
+
+    function Task4() {
+        let baseButton = new Button("Base button");
+        let timeButton = new TimeButton("Time button");
+        let sizeButton = new SizeButton("Size button");
+        let colorButton = new ColorButton("Color button");
+        let fileElement = document.createElement('div');
+        Object.assign(fileElement.style, { width: "50px", height: '50px', background: 'green' });
+        let baseFile = new File(fileElement);
+        let redCircleFile = new RedCircleFile();
+        let blackParallelogramFile = new BlackParallelogramFile();
+        let greenOvalFile = new GreenOvalFile();
+    }
+</script>
+<body>
+    <button onclick="Task1()">Task1</button>
+    <button onclick="Task2()">Task2</button>
+    <button onclick="Task3()">Task3</button>
+    <button onclick="Task4()">Task4</button>
+</body>
+</html>

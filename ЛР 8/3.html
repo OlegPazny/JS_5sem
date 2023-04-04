@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script>
+        let products={
+            shoes:{
+                boots:[{
+                        id:1,
+                        size:44,
+                        color:'Brown',
+                        price:231
+                    },
+                    {
+                        id:2,
+                        size:39,
+                        color:'Green',
+                        price:150
+                    }],
+                sneakers:[{
+                        id:3,
+                        size:43,
+                        color:'Red',
+                        price:350
+                    }],
+                sandals:[{
+                        id:4,
+                        size:36,
+                        color:'White',
+                        price:95
+                    }]
+            },
+            [Symbol.iterator](){
+                const keys=Object.keys(this);
+                const limit=keys.length;
+                const obj=this;
+                let countCategory=0;
+                let countType=0;
+                let countElement=0;
+
+                return{
+                    next(){
+                        let types=Object.keys(obj[keys[countCategory]]);
+                        if(countType<types.length-1){
+                            if(countElement>=obj[keys[countCategory]][types[countType]].length){
+                                countType++;
+                                countElement=0;
+                            }
+                        }else{
+                            countCategory++;
+                            if(countCategory==limit){
+                                return{
+                                    done:true
+                                }
+                            }
+                            countElement=0;
+                            countType=0;
+                        }
+                        return{
+                            done:false,
+                            value:obj[keys[countCategory]][types[countType]][countElement++]
+                        }
+                    }
+                }
+            }
+        }
+        //по цвету
+        let color="Brown";
+
+        for(const el of products){
+            if(el.color===color){
+                console.log(el);
+            }
+        }
+        //по размеру
+        let size=39;
+
+        for(const el of products){
+            if(el.size===size){
+                console.log(el);
+            }
+        }
+        //ценовой диапазон
+        let minPrice=160;
+        let maxPrice=350;
+        for(const el of products){
+            if(minPrice<=el.price&&maxPrice>=el.price){
+                console.log(el);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

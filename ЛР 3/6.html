@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <script>
+        let students=[{name:'Oleg',age:19,groupId:10},
+                        {name:'Cheslav',age:19,groupId:9},
+                        {name:'Pavel',age:20,groupId:9},
+                        {name:'Nikita',age:16,groupId:10},
+                        {name:'Maxim',age:17,groupId:10}];
+        let groups={};
+
+        students.forEach(stud =>{
+            if(stud.age>17){
+                if(groups[stud.groupId]===undefined){
+                    groups[stud.groupId]=[];
+                }
+                groups[stud.groupId].push(stud.name);
+            }
+        });
+
+        console.log(groups);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

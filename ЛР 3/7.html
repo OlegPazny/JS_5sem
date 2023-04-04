@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7</title>
+    <script>
+        let txt=prompt("Введите символы","");
+
+        let arr=txt.split('');
+
+        alert(arr);
+
+        let total1=arr.reduce((previous, current) => previous.concat(current.charCodeAt()), []).join('');
+        let total2=total1.toString().replace(new RegExp('7', 'g'), '1');
+        alert(total1);
+        alert(total2);
+        alert(parseInt(total1)-parseInt(total2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

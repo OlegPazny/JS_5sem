@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script>
+        class Student{
+            constructor(name,surname,faculty,id){
+                this.Name=name;
+                this.Surname=surname;
+                this.Faculty=faculty;
+                this.Id=id;
+            }
+            getFullName(){
+                return `${this.Name} ${this.Surname}`;
+            }
+            getCourse(){
+                return (new Date().getFullYear()+1)%100 -Number(this.Id.toString().slice(2,4));
+            }
+            static getDev(arr){
+                let newArr=[];
+                for(const el of arr){
+                    if(Number((el.Id.toString())[0])===7&&Number((el.Id.toString())[1])===3){
+                        newArr.push(el);
+                    }
+                }
+                return newArr.length;
+            }
+            static getFacultyList(arr, faculty){
+                console.log(`${faculty}: `);
+                let courseArr=[[], [], [], [], []];
+
+                for(const el of arr){
+                    if(el.Faculty===faculty){
+                        courseArr[el.getCourse()-1].push(el.getFullName());
+                    }
+                }
+                for(let i=0; i<courseArr.length; i++){
+                    if(courseArr[i].length===0) continue;
+                    console.log(`${i+1} курс:`);
+
+                    for(let j=0; j<courseArr[i].length; j++){
+                        console.log(courseArr[i][j]);
+                    }
+                }
+            }
+            static getList(arr){
+                this.getFacultyList(arr, "IT");
+                this.getFacultyList(arr, "ID");
+            }
+        }
+        let students=[new Student("Oleg", "Basalay", "IT", 73201600),
+                    new Student("Polina", "Ezdakova", "IT", 71222601),
+                    new Student("Koss", "Valeria", "ID", 62191602),
+                    new Student("Max", "Uglyanitsa", "ID", 63202603),
+                    new Student("Nikita", "Ganin", "IT", 74201604),];
+        console.log(Student.getDev(students));
+        Student.getList(students);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

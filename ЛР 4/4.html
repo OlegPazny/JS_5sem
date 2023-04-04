@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    
+</head>
+<body>
+    <div>
+        <button class="btn">Кнопка раз</button>
+        <button class="btn">Кнопка два</button>
+        <button class="btn">Кнопка три</button>
+    </div>
+    <div>
+        <a href="#">Ссылка раз</a>
+        <a href="#">Ссылка два</a>
+        <a href="#">Ссылка три</a>
+    </div>
+    <script>
+        let btnObj={
+            height:"100 px",
+            width:"200 px",
+            color:"black",
+            "font-size":"14px",
+        };
+
+        let hrefObj={
+            "font-size":"14px",
+            color:"black",
+            "text-decoration":"none",
+        };
+
+        let accentObj={
+            "background-color":"yellow",
+            color:"black",
+        };
+        
+        let accentBtn=document.createElement("button");
+        accentBtn.innerHTML="Кнопка-акцент";
+        Object.assign(accentBtn.style,btnObj,accentObj);
+        document.body.appendChild(accentBtn);
+
+        let accentHref=document.createElement("a");
+        accentHref.innerHTML="Ссылка-акцент";
+        Object.assign(accentHref.style,hrefObj,accentObj);
+        document.body.appendChild(accentHref);
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: 100vw; height: 49vh; display: flex; justify-content: center;">
+        <img src="./Darts-Background-PNG.png" alt="Darts" width="200px" height="200px">
+    </div>
+    <div style="width: 100vw; height: 49vh; border-top: 1px red solid;" class="box">
+        <img draggable="false" src="./darts_PNG5.png" class="drotic" alt="drotic"
+            style="position: absolute; transform: rotate(-120deg); top: calc(50vh + 20px); left: calc(50vw - 50px)"
+            width="100px">
+    </div>
+
+    <script>
+        let droticFlag = false;
+        let box = document.querySelector('.box');
+        let drotic = document.querySelector('.drotic');
+        let distanceY = 0;
+        let distanceX = 0;
+
+
+        drotic.addEventListener('mousedown', () => {
+            droticFlag = true;
+            drotic.style.transition = 'none'
+        })
+
+        box.addEventListener('mousemove', (e) => {
+            if (e.pageY >= window.innerHeight / 2 && droticFlag) {
+                drotic.style.top = e.pageY + 'px';
+                drotic.style.left = e.pageX - 50 + 'px';
+                distanceY = window.innerHeight / 2 - (e.pageY - window.innerHeight / 2);
+                distanceX = (window.innerWidth / 2 - e.pageX) + window.innerWidth / 2 - 50;
+                if (e.pageX <= window.innerWidth / 2 - 100) drotic.style.transform = "rotate(-90deg)";
+                else if (e.pageX >= window.innerWidth / 2 + 100) drotic.style.transform = "rotate(-180deg)";
+                else drotic.style.transform = "rotate(-120deg)";
+            }
+        })
+
+        drotic.addEventListener('mouseup', () => {
+            drotic.style.transition = '0.3s ease-out';
+            droticFlag = false;
+            drotic.style.top = distanceY + 'px';
+            drotic.style.left = distanceX + 'px';
+        })
+    </script>
+</body>
+
+</html>

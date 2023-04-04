@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <script>
+        const min=60;
+        const hour=min**2;
+        const day=hour*24;
+        const month=day*31;
+        const year=month*12;
+
+        let totalSec=Math.pow(10,3)*Math.pow(26,5)*3;
+        let years=Math.floor(totalSec/year);
+        let months=Math.floor((totalSec-(years*year))/month);
+        let days=Math.floor((totalSec-((years*year)+(months*month)))/day);
+        let hours=Math.floor((totalSec-((years*year)+(months*month)+(days*day)))/hour);
+        let mins=Math.floor((totalSec-((years*year)+(months*month)+(days*day)+(hours*hour)))/min);
+        let secs=Math.floor((totalSec-((years*year)+(months*month)+(days*day)+(hours*hour)+(min*mins))));
+    
+        alert(`Чтобы подобрать пароль понадобится ${years} годa(лет) ${months} месяц(ев) ${days} день(дней) ${hours} часа(ов) ${minutes} минут(а) ${seconds} секунд(а)`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

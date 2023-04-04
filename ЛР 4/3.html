@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script>
+        let dayOfWeek=4;
+
+        let days=[{num:1,name:'Mon'},
+                    {num:2,name:'Tue'},
+                    {num:3,name:'Wed'},
+                    {num:4,name:'Thu'},
+                    {num:5,name:'Fri'},
+                    {num:6,name:'Sat'},
+                    {num:7,name:'Sun'},];
+        let result={};
+
+        alert(days[dayOfWeek-1].name);
+
+        days.forEach(day=>{
+            if(day.num%2==!0){
+                if(result[day.num]===undefined){
+                    result[day.num]=[];
+                }
+                result[day.num].push(day.name)
+            }
+        });
+
+        console.log(Object.keys(result).length);
+
+        console.log(result);
+    </script>
+</head>
+<body>
+</body>
+</html>

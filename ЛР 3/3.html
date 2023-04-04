@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <script>
+        let katet1=+prompt("Длина катета 1","");
+        let katet2=+prompt("Длина катета 2","");
+
+        function square(a,b){
+            let s=a*b/2;
+            alert("Площадь равна: "+s.toFixed(1));
+        }
+
+        function perimeter(a,b){
+            let p=Math.sqrt(a**2+b**2)+a+b;
+            alert("Периметр равен: "+p.toFixed(1));
+        }
+
+        function height(a,b){
+            let height=a*b/Math.sqrt(a**2+b**2);
+            alert("Высота равна: "+height.toFixed(1));
+        }
+
+        function cosinus(a,b){
+            let cos1=a/Math.sqrt(a**2+b**2);
+            let cos2=b/Math.sqrt(a**2+b**2);
+            alert("Косинус 1 равен: "+cos1.toFixed(1));
+            alert("Косинус 2 равен: "+cos2.toFixed(1));
+        }
+
+        function sinus(a,b){
+            let sin2=a/Math.sqrt(a**2+b**2);
+            let sin1=b/Math.sqrt(a**2+b**2);
+            alert("Синус 1 равен: "+sin1.toFixed(1));
+            alert("Синус 2 равен: "+sin2.toFixed(1));
+        }
+
+        function tangens(a,b){
+            let tg1=b/a;
+            let tg2=a/b;
+            alert("Тангенс 1 равен: "+tg1.toFixed(1));
+            alert("Тангенс 2 равен: "+tg2.toFixed(1));
+        }
+
+        function cotangens(a,b){
+            let ctg1=a/b;
+            let ctg2=b/a;
+            alert("Котангенс 1 равен: "+ctg1.toFixed(1));
+            alert("Котангенс 2 равен: "+ctg2.toFixed(1));
+        }
+
+        square(katet1,katet2);
+        perimeter(katet1,katet2);
+        height(katet1,katet2);
+        cosinus(katet1,katet2);
+        sinus(katet1,katet2);
+        tangens(katet1,katet2);
+        cotangens(katet1,katet2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

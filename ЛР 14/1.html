@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="Forms-Container">
+        <div
+            style="width: 90%; display: flex; align-items: center; justify-content: space-evenly; align-items: flex-start;">
+            <div class="Forms-Container__Button Forms-Container__Button__Active" value="Auth"
+                title="Вкладка авторизации"><img src="./auth.png" style="width: 20px;">Авторизация</div>
+            <div class="Forms-Container__Button" value="Reg" title="Вкладка регистрации"><img src="./reg.png"
+                    style="width: 20px;">Регистрация</div>
+        </div>
+        <form class="Form Form-Auth">
+            <div class="Form__Container-Input-Text">
+                <input type="text" required name="login" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите почту</div>
+            </div>
+            <div class="Form__Container-Input-Text">
+                <input type="password" required name="password" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите пароль</div>
+            </div>
+            <label class="Form__Button">
+                <div
+                    style="width: 100%; height:100%; display:flex; align-items:center; justify-content:center; position: relative; z-index: 2;">
+                    Войти</div>
+                <div class="Form__Button-BackgroundTwo"></div>
+                <div class="Form__Button-BackgroundOne"></div>
+                <input type="submit" required hidden></input>
+            </label>
+            <ul class="Social-List">
+                <li><a href="#">
+                        <div><img src="./telegram.png"></div>
+                    </a></li>
+                <li><a href="#">
+                        <div><img src="./instagram.png"></div>
+                    </a></li>
+            </ul>
+            <div style="width: 100%; text-align: center; cursor: pointer;">Забыли пароль</div>
+        </form>
+        <form class="Form Form-Reg">
+            <div class="Form__Container-Input-Text">
+                <input type="text" required name="lastname" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите фамилию</div>
+            </div>
+            <div class="Form__Container-Input-Text">
+                <input type="text" required name="name" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите имя</div>
+            </div>
+            <input type="date" required name="birthday" class="Form__Container-Input-Date">
+            <!-- <div class="Form__Container-Input-Text">
+                <input type="text" name="birthday" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите дату рождения(ДД.ММ.ГГГГ)</div>
+            </div> -->
+            <div class="Form__Container-Input-Text">
+                <input type="text" required name="login" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите почту</div>
+            </div>
+            <div class="Form__Container-Input-Text">
+                <input type="password" required name="password" class="Form__Input-Text">
+                <div class="Form__Placeholder-Input-Text">Введите пароль</div>
+            </div>
+            <label class="Form__Button">
+                <div
+                    style="width: 100%; height:100%; display:flex; align-items:center; justify-content:center; position: relative; z-index: 2;">
+                    Зарегистрироваться</div>
+                <div class="Form__Button-BackgroundTwo"></div>
+                <div class="Form__Button-BackgroundOne"></div>
+                <button hidden></button>
+            </label>
+        </form>
+    </div>
+    <script>
+        let Form__Button = document.querySelectorAll('.Forms-Container__Button');
+        let Form__ButtonInput = document.querySelectorAll('.Form__Button-Input');
+        class Validator {
+            static isEmail(mail) {
+                return mail.match(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/) ? true : false;
+            }
+
+            static isPassword(password) {
+                return password.match(/^.{6,15}$/);
+            }
+
+            static isFIO(fio) {
+                return fio.match(/^\w{2,10}$/)
+            }
+
+            static inList(mail) {
+                return userList.filter((el) => el.Mail === mail).length ? true : false;
+            }
+
+            static isPasswordList(mail, password) {
+                return userList.filter((el) => el.Mail === mail && el.Password === password).length ? true : false;
+            }
+        }
+
+        class User {
+            constructor(lastname, name, birthday, mail, password) {
+                this.Lastname = lastname;
+                this.Name = name;
+                this.Birthday = birthday;
+                this.Mail = mail;
+                this.Password = password;
+            }
+        }
+
+        let userList = [new User('basalay', 'oleg', '2003-05-29', 'basalayoleg123@gmail.com', '123123')];
+
+        for (let i = 0; i < Form__Button.length; i++) {
+            Form__Button[i].addEventListener('click', (e) => {
+                if (!e.currentTarget.className.includes('.Forms-Container__Button__Active')) {
+                    document.querySelector('.Forms-Container__Button__Active').classList.toggle('Forms-Container__Button__Active');
+                    e.currentTarget.classList.toggle('Forms-Container__Button__Active');
+                    switch (e.currentTarget.getAttribute('value')) {
+                        case "Auth":
+                            document.querySelector('.Form-Reg').style.display = 'none';
+                            document.querySelector('.Form-Auth').style.display = 'flex';
+                            break;
+                        case "Reg":
+                            document.querySelector('.Form-Auth').style.display = 'none';
+                            document.querySelector('.Form-Reg').style.display = 'flex';
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+            document.forms[i].addEventListener('submit', (e) => {
+                e.preventDefault();
+                try {
+                    switch (document.querySelector('.Forms-Container__Button__Active').getAttribute('value')) {
+                        case "Auth":
+                            if (!Validator.isEmail(document.forms[0].elements.login.value)) throw new Error("Неверный формат почты");
+                            if (!Validator.isPassword(document.forms[0].elements.password.value)) throw new Error('Неверный формат пароля');
+                            if (!Validator.inList(document.forms[0].elements.login.value)) throw new Error('Пользовать с такой почтой не найден');
+                            if (!Validator.isPasswordList(document.forms[0].elements.login.value, document.forms[0].elements.password.value)) throw new Error("Неверный пароль");
+                            alert("Вы успешно авторизировались!");
+                            break;
+                        case "Reg":
+                            if (!Validator.isFIO(document.forms[1].elements.lastname.value)) throw new Error("Неверный формат фамилии");
+                            if (!Validator.isFIO(document.forms[1].elements.name.value)) throw new Error("Неверный формат имени");
+                            if (!Validator.isEmail(document.forms[1].elements.login.value)) throw new Error("Неверный формат почты");
+                            if (Validator.inList(document.forms[1].elements.login.value)) throw new Error('Пользователь с такой почтой уже существует');
+                            if (!Validator.isPassword(document.forms[1].elements.password.value)) throw new Error('Неверный формат пароля');
+                            userList.push(new User(document.forms[1].elements.lastname.value, document.forms[1].elements.name.value, document.forms[1].elements.birthday.value, document.forms[1].elements.login.value, document.forms[1].elements.password.value));
+                            alert("Вы успешно зарегистрировались!")
+                            console.log(userList);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (error) {
+                    alert(error.message)
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
